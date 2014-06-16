@@ -127,16 +127,16 @@ namespace :puma do
 
   def template_puma(from, to, role)
     [
-        File.expand_path("../../templates/#{from}-#{role.hostname}-#{fetch(:stage)}.erb", __FILE__),
-        File.expand_path("../../templates/#{from}-#{fetch(:stage)}.erb", __FILE__),
-        File.expand_path("../../templates/#{from}.erb", __FILE__),
+        File.expand_path("#{fetch(:puma_template_path)}/#{from}.erb"),
         "lib/capistrano/templates/#{from}-#{role.hostname}-#{fetch(:stage)}.rb",
         "lib/capistrano/templates/#{from}-#{role.hostname}.rb",
         "lib/capistrano/templates/#{from}-#{fetch(:stage)}.rb",
         "lib/capistrano/templates/#{from}.rb.erb",
         "lib/capistrano/templates/#{from}.rb",
         "lib/capistrano/templates/#{from}.erb",
+        File.expand_path("../../templates/#{from}.erb", __FILE__)
     ].each do |path|
+      require 'pry';binding.pry
       if File.file?(path)
         erb = File.read(path)
         upload! StringIO.new(ERB.new(erb).result(binding)), to
