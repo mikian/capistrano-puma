@@ -136,7 +136,6 @@ namespace :puma do
         "lib/capistrano/templates/#{from}.erb",
         File.expand_path("../../templates/#{from}.erb", __FILE__)
     ].each do |path|
-      require 'pry';binding.pry
       if File.file?(path)
         erb = File.read(path)
         upload! StringIO.new(ERB.new(erb).result(binding)), to
