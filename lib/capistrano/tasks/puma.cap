@@ -129,7 +129,7 @@ namespace :puma do
     [
         File.expand_path("../../templates/#{from}-#{role.hostname}-#{fetch(:stage)}.erb", __FILE__),
         File.expand_path("../../templates/#{from}-#{fetch(:stage)}.erb", __FILE__),
-        File.expand_path("../../templates/#{from}.erb", __FILE__)
+        File.expand_path("../../templates/#{from}.erb", __FILE__),
         "lib/capistrano/templates/#{from}-#{role.hostname}-#{fetch(:stage)}.rb",
         "lib/capistrano/templates/#{from}-#{role.hostname}.rb",
         "lib/capistrano/templates/#{from}-#{fetch(:stage)}.rb",
